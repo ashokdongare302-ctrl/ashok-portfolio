@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ashok dongare | Portfolio</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- CURSOR EFFECT -->
+<div class="cursor"></div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">ashok.</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-content reveal">
+        <h2>Hello, I'm</h2>
+        <h1>ashok dongare</h1>
+        <p><span id="typing"></span></p>
+        <a href="#contact" class="btn">Hire Me</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title reveal">About Me</h2>
+
+    <div class="about-container">
+        <div class="about-text reveal">
+            <h3>Career Objective</h3>
+            <p>
+                To become a skilled software developer by applying my knowledge 
+                of programming languages and building real-world projects.
+            </p>
+
+            <h3>Education</h3>
+            <p>
+                <strong>Diploma in Engineering</strong><br>
+                Computer Engineering <br>
+                JCEP, Maharashtra
+            </p>
+            <p>
+                       </div>
+
+        <div class="skills-wrapper reveal">
+            <h3>Technical Skills</h3>
+
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fa-brands fa-cuttlefish"></i><h4>C</h4></div>
+                <div class="skill-card"><i class="fa-solid fa-code"></i><h4>C++</h4></div>
+                <div class="skill-card"><i class="fa-brands fa-java"></i><h4>Java</h4></div>
+                <div class="skill-card"><i class="fa-solid fa-microchip"></i><h4>javaScript</h4></div>
+                <div class="skill-card"><i class="fa-solid fa-object-group"></i><h4>OOP</h4></div>
+                <div class="skill-card"><i class="fa-solid fa-tools"></i><h4>VS Code</h4></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title reveal">Projects</h2>
+
+    <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card reveal">
+            <div class="project-img">
+                <i class="fa-solid fa-lock fa-3x"></i>
+            </div>
+
+            <div class="project-content">
+                <h3>Password Manager</h3>
+                <p>
+                    A JavaScript-based password manager that stores data 
+                    using local storage and persists even after reload.
+                </p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal">
+            <div class="project-img">
+                <i class="fa-solid fa-calendar-check fa-3x"></i>
+            </div>
+
+            <div class="project-content">
+                <h3>Shop manager</h3>
+                <p>
+                    shop mangement platform using MongoDB Atlas 
+                    and deployed frontend on Vercel.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title reveal">Contact Me</h2>
+
+    <div class="contact-content reveal">
+        <p>Open for learning and collaboration.</p>
+
+        <div class="contact-cards">
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <p>ashokdonghre@gmail.com</p>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <p>+91123456789</p>
+            </div>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 ashok dongare</p>
+</footer>
+
+<!-- JS -->
+<script>
+/* typing effect */
+const text = ["Software Developer", "Java Programmer", "Web Developer"];
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+    current = text[i];
+    document.getElementById("typing").textContent =
+        current.substring(0,j);
+
+    if(!isDeleting && j++ === current.length){
+        isDeleting = true;
+        setTimeout(type,1000);
+        return;
+    }
+    if(isDeleting && j-- === 0){
+        isDeleting = false;
+        i = (i+1)%text.length;
+    }
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+type();
+
+/* scroll reveal */
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", ()=>{
+    reveals.forEach(el=>{
+        let top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            el.classList.add("active");
+        }
+    });
+});
+
+/* cursor */
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+    cursor.style.top = e.clientY+"px";
+    cursor.style.left = e.clientX+"px";
+});
+</script>
+
+</body>
+</html>
